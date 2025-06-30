@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fund Wallet - IBT SUB</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #38bdf8;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #facc15;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      background-color: #334155;
+      color: #fff;
+    }
+    input:focus {
+      outline: none;
+      background-color: #475569;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0ea5e9;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #0f172a;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #0284c7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Fund Your Wallet</h2>
+  <form action="paystack_initialize.php" method="POST">
+    <label>Amount (₦):</label>
+    <input type="number" name="amount" required>
+    <label>Email:</label>
+    <input type="email" name="email" required>
+    <button type="submit">Pay with Paystack</button>
+    </form>
+  </div>
+</body>
+</html>

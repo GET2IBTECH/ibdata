@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - IBT SUB</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Tailwind CSS CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Base styles, keeping font consistent */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f172a; /* Solid dark background */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    /* Container for the profile sections */
+    .profile-container {
+      max-width: 700px;
+      width: 100%;
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      border: 1px solid #334155;
+    }
+    /* Heading styling */
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #38bdf8;
+      font-size: 2.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    h3 {
+      color: #facc15;
+      font-size: 1.75rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    h3 i {
+      margin-right: 10px;
+      color: #38bdf8;
+    }
+    /* Form group styling */
+    .form-group {
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #e2e8f0;
+      font-size: 1rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px; /* Adjust spacing for form elements */
+      border-radius: 8px;
+      border: none;
+      background-color: #334155;
+      color: #fff;
+      font-size: 1rem;
+    }
+    input:focus {
+      outline: none;
+      background-color: #475569;
+      box-shadow: 0 0 0 2px #38bdf8;
+    }
+    /* Read-only fields styling */
+    .read-only-field {
+      background-color: #2d3748; /* Slightly different background for read-only */
+      color: #cbd5e0;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      border: 1px solid #334155;
+    }
+    /* Button styling */
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #22c55e;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #0f172a;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background-color: #16a34a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Section spacing */
+    .section-divider {
+      border-top: 1px dashed #334155;
+      margin: 40px 0;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 10px;
+      }
+      .profile-container {
+        padding: 20px;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+      }
+      button {
+        padding: 12px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <h2><i class="fas fa-user-circle mr-3"></i> My Profile</h2>
+
+    <!-- Personal Information Section -->
+    <div class="form-section">
+      <h3><i class="fas fa-user"></i> Personal Information</h3>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="John Doe" value="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john.doe@example.com" value="john.doe@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g., 08012345678" value="08012345678" required>
+        </div>
+        <button type="submit">Update Personal Info</button>
+      </form>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Address Information Section -->
+    <div class="form-section">
+      <h3><i class="fas fa-map-marker-alt"></i> Address Information</h3>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="address">Address Line</label>
+          <input type="text" id="address" name="address" placeholder="123 Main Street" value="123 Main Street">
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" placeholder="Lagos" value="Lagos">
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" placeholder="Lagos State" value="Lagos State">
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text" id="country" name="country" placeholder="Nigeria" value="Nigeria" readonly>
+        </div>
+        <button type="submit">Update Address</button>
+      </form>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Account Details Section (Read-only) -->
+    <div class="form-section">
+      <h3><i class="fas fa-id-card"></i> Account Details</h3>
+      <div class="form-group">
+        <label>Account ID</label>
+        <div class="read-only-field">IBT234567</div>
+      </div>
+      <div class="form-group">
+        <label>Current Package</label>
+        <div class="read-only-field">Smart Earner</div>
+      </div>
+      <div class="form-group">
+        <label>Referral Link</label>
+        <div class="read-only-field">
+          <a href="https://ibt-sub.com/signup/?ref=get2ibtech" target="_blank" class="text-blue-300 hover:underline">https://ibt-sub.com/signup/?ref=get2ibtech</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

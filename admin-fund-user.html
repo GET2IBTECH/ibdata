@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fund User Wallet - Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Your CSS styles would go here or be linked from an external file */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 40px;
+    }
+    .container {
+      background: #1e293b;
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+    label {
+      display: block;
+      margin: 10px 0 6px;
+      font-weight: 600;
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #334155;
+      color: white;
+    }
+    input:focus {
+      outline: none;
+      background: #475569;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #0ea5e9;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #0f172a;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0284c7;
+    }
+    .success, .error {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .success {
+      background-color: #16a34a;
+      color: white;
+    }
+    .error {
+      background-color: #dc2626;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><i class="fas fa-user-plus"></i> Fund User Wallet</h2>
+
+    <form method="GET" action="admin-fund-user.php">
+      <label>Search by User ID or Email:</label>
+      <input type="text" name="search" placeholder="Enter user ID or email" required>
+      <button type="submit"><i class="fas fa-search"></i> Search</button>
+    </form>
+
+    <hr style="margin: 30px 0; border-color: #334155;">
+    <form method="POST">
+      <input type="hidden" name="user_id" value="[User ID from PHP]">
+      <p><strong>User:</strong> [Full Name from PHP] ([Email from PHP])</p>
+      <p><strong>Current Wallet:</strong> ₦[Wallet Balance from PHP]</p>
+
+      <label>Amount to Fund:</label>
+      <input type="number" name="amount" placeholder="Enter amount" required>
+
+      <button type="submit" name="fund_user"><i class="fas fa-wallet"></i> Fund Wallet</button>
+    </form>
+
+    <div class="success">[Success message from PHP]</div>
+    <div class="error">[Error message from PHP]</div>
+  </div>
+</body>
+</html>

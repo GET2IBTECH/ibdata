@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Data - IBT SUB</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      max-width: 400px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #facc15;
+    }
+    select, input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      background-color: #334155;
+      color: #fff;
+    }
+    select:focus, input:focus {
+      outline: none;
+      background-color: #475569;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0ea5e9;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #0f172a;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #0284c7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Buy Data</h2>
+    <form action="buy-data.php" method="POST">
+      <label>Network:</label>
+      <select name="network" required>
+        <option value="">Select Network</option>
+        <option value="mtn">MTN</option>
+        <option value="glo">GLO</option>
+        <option value="airtel">Airtel</option>
+        <option value="9mobile">9mobile</option>
+      </select>
+
+      <label>Phone Number:</label>
+      <input type="text" name="phone" required placeholder="Enter recipient number"/>
+
+      <label>Data Plan (e.g. 1GB):</label>
+      <select name="plan" required>
+        <option value="">Select Plan</option>
+        <option value="500">1GB - ₦500</option>
+        <option value="1000">2GB - ₦1000</option>
+        <option value="1500">3GB - ₦1500</option>
+      </select>
+
+      <button type="submit">Proceed to Buy</button>
+    </form>
+  </div>
+</body>
+</html>

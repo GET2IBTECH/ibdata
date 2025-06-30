@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pay Electricity Bill - IBT SUB</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Basic styling for the body */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a; /* Dark blue background */
+      color: #ffffff; /* White text color */
+      font-family: 'Inter', sans-serif; /* Use Inter font */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px; /* Padding around the content */
+    }
+    /* Container for the form */
+    .container {
+      max-width: 500px; /* Maximum width for the container */
+      width: 100%; /* Full width on smaller screens */
+      background: #1e293b; /* Slightly lighter dark blue for the container */
+      padding: 30px; /* Inner padding */
+      border-radius: 12px; /* Rounded corners */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Soft shadow */
+    }
+    /* Heading styling */
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #38bdf8; /* Bright blue color for the heading */
+    }
+    /* Label styling */
+    label {
+      display: block; /* Each label on its own line */
+      margin-bottom: 8px;
+      font-weight: 600; /* Bold text */
+      color: #facc15; /* Yellow color for labels */
+    }
+    /* Select and input field styling */
+    select, input {
+      width: 100%; /* Full width */
+      padding: 12px; /* Inner padding */
+      margin-bottom: 20px; /* Space below each field */
+      border-radius: 10px; /* Rounded corners */
+      border: none; /* No border */
+      background-color: #334155; /* Darker background for fields */
+      color: #fff; /* White text color */
+    }
+    /* Focus state for select and input */
+    select:focus, input:focus {
+      outline: none; /* Remove outline on focus */
+      background-color: #475569; /* Slightly lighter background on focus */
+    }
+    /* Button styling */
+    button {
+      width: 100%; /* Full width */
+      padding: 12px; /* Inner padding */
+      background-color: #22c55e; /* Green background */
+      border: none; /* No border */
+      border-radius: 10px; /* Rounded corners */
+      font-weight: bold; /* Bold text */
+      color: #0f172a; /* Dark blue text color */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background 0.3s; /* Smooth transition for background color */
+    }
+    /* Button hover state */
+    button:hover {
+      background-color: #16a34a; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><i class="fas fa-bolt"></i> Pay Electricity Bill</h2> <!-- Changed icon and heading for electricity -->
+    <form action="#" method="POST">
+      <label for="disco_name">Select Disco Name</label> <!-- Changed label for Disco Name -->
+      <select name="disco_name" id="disco_name" required>
+        <option value="">-- Choose Disco --</option>
+        <option value="IKEDC">Ikeja Electric (IKEDC)</option>
+        <option value="EKEDC">Eko Electric (EKEDC)</option>
+        <option value="IBEDC">Ibadan Electric (IBEDC)</option>
+        <option value="PHEDC">Port Harcourt Electric (PHEDC)</option>
+        <option value="AEDC">Abuja Electric (AEDC)</option>
+        <option value="KEDC">Kano Electric (KEDC)</option>
+        <option value="JEDC">Jos Electric (JEDC)</option>
+        <option value="EEDC">Enugu Electric (EEDC)</option>
+        <option value="BEDC">Benin Electric (BEDC)</option>
+        <option value="KAEDC">Kaduna Electric (KAEDC)</option>
+        <option value="YEDC">Yola Electric (YEDC)</option>
+        <!-- Add more Disco names as needed -->
+      </select>
+
+      <label for="meter_type">Select Meter Type</label>
+      <select name="meter_type" id="meter_type" required>
+        <option value="">-- Choose Meter Type --</option>
+        <option value="Prepaid">Prepaid</option>
+        <option value="Postpaid">Postpaid</option>
+      </select>
+
+      <label for="meter_number">Meter Number</label>
+      <input type="text" name="meter_number" id="meter_number" placeholder="e.g., 12345678901" required>
+
+      <label for="amount">Amount (₦)</label>
+      <input type="number" name="amount" id="amount" placeholder="e.g., 5000" min="100" required>
+
+      <label for="phone">Customer Phone Number</label> <!-- Changed label for clarity -->
+      <input type="text" name="phone" id="phone" placeholder="08012345678" required>
+
+      <button type="submit">Pay Bill</button>
+    </form>
+  </div>
+</body>
+</html>

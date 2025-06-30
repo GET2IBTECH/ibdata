@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - IBT SUB</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f172a;
+      color: white;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 220px;
+      background: #1e293b;
+      padding: 20px;
+      flex-shrink: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 22px;
+      color: #38bdf8;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 15px;
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .main {
+      flex-grow: 1;
+      padding: 30px;
+      background: linear-gradient(to bottom right, #1e3a8a, #0f172a);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .topbar h1 {
+      font-size: 24px;
+      color: #facc15;
+    }
+
+    .logout a {
+      background: #dc2626;
+      padding: 10px 20px;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .logout a:hover {
+      background: #b91c1c;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .stat-box {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .stat-box h3 {
+      font-size: 18px;
+      color: #facc15;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      font-size: 26px;
+      font-weight: bold;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .main {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="admin-dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+    <a href="admin-manage-users.html"><i class="fas fa-users"></i> Manage Users</a>
+    <a href="admin-transactions.html"><i class="fas fa-money-check-alt"></i> Transactions</a>
+    <a href="admin-fund-users.html"><i class="fas fa-wallet"></i> Fund User Wallet</a>
+    <a href="admin-settings.html"><i class="fas fa-cogs"></i> Settings</a>
+    <a href="admin-logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</div>
+
+  <div class="main">
+    <div class="topbar">
+      <h1>Welcome, Admin</h1>
+      <div class="logout">
+        <a href="admin-logout.php">Logout</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <h3>Total Users</h3>
+        <p>120</p>
+      </div>
+      <div class="stat-box">
+        <h3>Total Transactions</h3>
+        <p>₦345,000</p>
+      </div>
+      <div class="stat-box">
+        <h3>Wallet Balance</h3>
+        <p>₦78,900</p>
+      </div>
+      <div class="stat-box">
+        <h3>Pending Requests</h3>
+        <p>6</p>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

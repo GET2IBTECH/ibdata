@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Settings - IBT SUB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #f8fafc;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      background: #ffffff;
+      margin: 60px auto;
+      padding: 30px 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #0f172a;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0f172a;
+      background: #fff;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      background: #0f172a;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1e293b;
+    }
+
+    .note {
+      font-size: 14px;
+      margin-top: 15px;
+      text-align: center;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Admin Settings</h2>
+
+    <form action="#" method="POST">
+      <label for="site_name">Site Name</label>
+      <input type="text" id="site_name" name="site_name" placeholder="e.g. IBT SUB">
+
+      <label for="support_email">Support Email</label>
+      <input type="email" id="support_email" name="support_email" placeholder="e.g. support@ibtsub.com">
+
+      <label for="legitdata_api_key">LegitData API Key</label>
+      <input type="text" id="legitdata_api_key" name="legitdata_api_key" placeholder="Your LegitData API Key">
+
+      <label for="paystack_secret_key">Paystack Secret Key</label>
+      <input type="text" id="paystack_secret_key" name="paystack_secret_key" placeholder="Your Paystack Secret Key">
+
+      <button type="submit">Save Settings</button>
+    </form>
+
+    <div class="note">
+      These settings control how your site connects to payment and data APIs.
+    </div>
+  </div>
+
+</body>
+</html>

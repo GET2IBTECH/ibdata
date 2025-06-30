@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions - IBT SUB</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Tailwind CSS CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Base styles, keeping font consistent */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f172a; /* Solid dark background */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    /* Container for the transactions page */
+    .transactions-container {
+      max-width: 900px; /* Wider container for tables */
+      width: 100%;
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      border: 1px solid #334155;
+    }
+    /* Heading styling */
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #38bdf8;
+      font-size: 2.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Filter and search styling */
+    .filter-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      background-color: #2d3748;
+      border-radius: 8px;
+      border: 1px solid #334155;
+    }
+    .filter-section label {
+      color: #e2e8f0;
+      font-weight: 500;
+      margin-right: 5px;
+    }
+    .filter-section select,
+    .filter-section input[type="text"] {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      background-color: #334155;
+      color: #fff;
+      font-size: 0.9rem;
+      flex-grow: 1; /* Allow inputs to grow */
+      min-width: 150px; /* Minimum width for inputs */
+    }
+    .filter-section button {
+      background-color: #22c55e;
+      color: #0f172a;
+      padding: 8px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 0.9rem;
+    }
+    .filter-section button:hover {
+      background-color: #16a34a;
+    }
+
+    /* Table styling */
+    .transaction-table-container {
+      overflow-x: auto; /* Enable horizontal scroll for table on small screens */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border: 1px solid #334155;
+    }
+    .transaction-table {
+      width: 100%;
+      border-collapse: collapse; /* Remove space between cells */
+      min-width: 700px; /* Ensure table doesn't get too narrow */
+    }
+    .transaction-table th,
+    .transaction-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #334155;
+    }
+    .transaction-table th {
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      position: sticky;
+      top: 0; /* Sticky header for scrolling tables */
+      z-index: 1;
+    }
+    .transaction-table tbody tr {
+      background-color: #1e293b;
+      transition: background-color 0.2s ease;
+    }
+    .transaction-table tbody tr:hover {
+      background-color: #2d3748;
+    }
+    .transaction-table tbody tr:last-child td {
+      border-bottom: none; /* No border for the last row */
+    }
+    .transaction-table td {
+      color: #cbd5e0;
+      font-size: 0.9rem;
+    }
+    /* Status badges */
+    .status-completed {
+      background-color: #22c55e;
+      color: #0f172a;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+    .status-pending {
+      background-color: #facc15;
+      color: #0f172a;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+    .status-failed {
+      background-color: #ef4444;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 10px;
+      }
+      .transactions-container {
+        padding: 20px;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+      .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-section select,
+      .filter-section input[type="text"],
+      .filter-section button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .filter-section label {
+        width: 100%; /* Make labels take full width */
+        text-align: left;
+        margin-bottom: 5px;
+      }
+      /* Table will rely on overflow-x: auto for responsiveness */
+      .transaction-table th, .transaction-table td {
+        padding: 10px;
+        font-size: 0.85rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .transactions-container {
+        padding: 15px;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="transactions-container">
+    <a href="transactions.php"><i class="fas fa-history"></i> Transactions</a>
+    <!-- Filter and Search Section -->
+    <div class="filter-section">
+      <label for="transactionType">Type:</label>
+      <select id="transactionType">
+        <option value="">All</option>
+        <option value="Data">Data Purchase</option>
+        <option value="Airtime">Airtime Purchase</option>
+        <option value="Electricity">Electricity Bill</option>
+        <option value="Cable">Cable Subscription</option>
+        <option value="Education">Education PIN</option>
+        <option value="Wallet Fund">Wallet Fund</option>
+        <option value="Airtime to Cash">Airtime to Cash</option>
+      </select>
+
+      <label for="transactionStatus">Status:</label>
+      <select id="transactionStatus">
+        <option value="">All</option>
+        <option value="Completed">Completed</option>
+        <option value="Pending">Pending</option>
+        <option value="Failed">Failed</option>
+      </select>
+
+      <label for="searchQuery">Search:</label>
+      <input type="text" id="searchQuery" placeholder="Search by ID or details">
+
+      <button><i class="fas fa-filter mr-2"></i> Apply Filters</button>
+      <button><i class="fas fa-sync-alt mr-2"></i> Reset Filters</button>
+    </div>
+
+    <!-- Transaction Table -->
+    <div class="transaction-table-container">
+      <table class="transaction-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TRN0012345</td>
+            <td>Data Purchase</td>
+            <td>₦300</td>
+            <td><span class="status-completed">Completed</span></td>
+            <td>2024-06-28 14:30</td>
+            <td>MTN 1GB to 08012345678</td>
+          </tr>
+          <tr>
+            <td>TRN0012344</td>
+            <td>Wallet Fund</td>
+            <td>₦5,000</td>
+            <td><span class="status-completed">Completed</span></td>
+            <td>2024-06-28 10:15</td>
+            <td>Via Bank Transfer</td>
+          </tr>
+          <tr>
+            <td>TRN0012343</td>
+            <td>Electricity Bill</td>
+            <td>₦2,500</td>
+            <td><span class="status-pending">Pending</span></td>
+            <td>2024-06-27 18:00</td>
+            <td>IKEDC Prepaid Meter 1234...</td>
+          </tr>
+          <tr>
+            <td>TRN0012342</td>
+            <td>Airtime to Cash</td>
+            <td>₦800</td>
+            <td><span class="status-completed">Completed</span></td>
+            <td>2024-06-27 09:45</td>
+            <td>From MTN ₦1000, 80% rate</td>
+          </tr>
+          <tr>
+            <td>TRN0012341</td>
+            <td>Cable Subscription</td>
+            <td>₦4,150</td>
+            <td><span class="status-failed">Failed</span></td>
+            <td>2024-06-26 21:00</td>
+            <td>GOTV Max to Smartcard 987...</td>
+          </tr>
+          <tr>
+            <td>TRN0012340</td>
+            <td>Education PIN</td>
+            <td>₦4,000</td>
+            <td><span class="status-completed">Completed</span></td>
+            <td>2024-06-26 11:20</td>
+            <td>WAEC Scratch Card</td>
+          </tr>
+          <tr>
+            <td>TRN0012339</td>
+            <td>Airtime Purchase</td>
+            <td>₦200</td>
+            <td><span class="status-completed">Completed</span></td>
+            <td>2024-06-25 16:50</td>
+            <td>AIRTEL to 07098765432</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination or Load More (Placeholder) -->
+    <div class="mt-8 text-center text-gray-400">
+      <p>Showing 1-7 of 25 transactions</p>
+      <button class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">
+        Load More
+      </button>
+    </div>
+
+  </div>
+</body>
+</html>

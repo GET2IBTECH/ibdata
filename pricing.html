@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Pricing Plans - IBT SUB</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Tailwind CSS CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom font for consistency and modern look */
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    /* Custom gradient background for the body */
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1a202c 100%);
+    }
+    /* Custom styles for pricing cards for a more refined look */
+    .pricing-card {
+      background: linear-gradient(145deg, #2d3748, #1a202c); /* Subtle gradient for card background */
+      border-radius: 16px; /* More rounded corners */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(56, 189, 248, 0.2); /* Enhanced shadow with a glow */
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effects */
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px); /* Lift card on hover */
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.4); /* Stronger shadow/glow on hover */
+    }
+    /* Stylish buttons */
+    .pricing-button {
+      background: linear-gradient(45deg, #38bdf8, #22c55e); /* Vibrant button gradient */
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    }
+    .pricing-button:hover {
+      transform: scale(1.03); /* Slight scale on hover */
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+      background: linear-gradient(45deg, #22c55e, #38bdf8); /* Reverse gradient on hover */
+    }
+    /* Animated price tags */
+    .price-tag {
+      background-color: #facc15; /* Yellow background for price tags */
+      color: #1f2937; /* Dark text for contrast */
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px; /* Pill shape */
+      font-weight: 700;
+      animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.6, 1); /* Gentle pulse animation */
+    }
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 rgba(250, 204, 21, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 10px rgba(250, 204, 21, 0.8);
+      }
+    }
+    /* List item styling */
+    .list-item {
+      background-color: #4a5568; /* Darker grey for list items */
+      padding: 12px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.2s ease-in-out;
+    }
+    .list-item:hover {
+      background-color: #606f81; /* Lighter grey on hover */
+    }
+    .list-item span:first-child {
+      color: #cbd5e0; /* Lighter text for service name */
+    }
+    .list-item span:last-child {
+      color: #a7f3d0; /* Soft green for values */
+      font-weight: 600;
+    }
+
+    /* Modal specific styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.75);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+    .modal-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-content {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+      width: 90%;
+      max-width: 450px;
+      position: relative;
+      transform: translateY(-20px);
+      transition: transform 0.3s ease-in-out;
+    }
+    .modal-overlay.show .modal-content {
+      transform: translateY(0);
+    }
+    .modal-close-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #cbd5e0;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+    .modal-close-button:hover {
+      color: #facc15;
+    }
+    .modal-content h3 {
+      color: #38bdf8;
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.75rem;
+      font-weight: bold;
+    }
+    .modal-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #facc15;
+    }
+    .modal-form input[type="text"],
+    .modal-form input[type="email"],
+    .modal-form input[type="tel"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: none;
+      background-color: #334155;
+      color: #fff;
+    }
+    .modal-form input:focus {
+      outline: none;
+      background-color: #475569;
+    }
+    .modal-submit-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #22c55e;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #0f172a;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .modal-submit-button:hover {
+      background-color: #16a34a;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center py-10 px-4 min-h-screen">
+  <div class="container max-w-5xl w-full p-8 rounded-xl">
+    <h2 class="text-center text-sky-400 text-4xl font-extrabold mb-12 flex items-center justify-center tracking-wide">
+      <i class="fas fa-tags mr-4 text-yellow-400"></i> Unlock Exclusive Savings!
+    </h2>
+
+    <!-- Pricing Tables Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Smart Users Pricing -->
+      <div class="pricing-card p-8 flex flex-col h-full transform scale-100">
+        <h3 class="text-3xl font-bold text-center text-yellow-300 mb-6 border-b-2 border-yellow-300 pb-3">Smart User</h3>
+        <p class="text-center text-gray-300 mb-8">Perfect for individuals looking for everyday savings.</p>
+        <ul class="space-y-4 flex-grow">
+          <li class="list-item">
+            <span>Data</span>
+            <span class="price-tag">5% Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Airtime</span>
+            <span class="price-tag">2% Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Electricity Bills</span>
+            <span class="price-tag">₦50 Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Cable Subscription</span>
+            <span class="price-tag">₦100 Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Education Pins (WAEC)</span>
+            <span class="price-tag">₦4000</span>
+          </li>
+          <li class="list-item">
+            <span>Airtime to Cash</span>
+            <span class="price-tag">80% Rate</span>
+          </li>
+        </ul>
+        <button class="pricing-button mt-10 w-full py-4 text-lg font-bold rounded-xl shadow-md" data-modal-target="smartUserModal">
+          Join Smart User
+        </button>
+      </div>
+
+      <!-- Affiliate Pricing -->
+      <div class="pricing-card p-8 flex flex-col h-full transform scale-100">
+        <h3 class="text-3xl font-bold text-center text-yellow-300 mb-6 border-b-2 border-yellow-300 pb-3">Affiliate</h3>
+        <p class="text-center text-gray-300 mb-8">Ideal for those who want to earn while saving more.</p>
+        <ul class="space-y-4 flex-grow">
+          <li class="list-item">
+            <span>Data</span>
+            <span class="price-tag">8% Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Airtime</span>
+            <span class="price-tag">3% Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Electricity Bills</span>
+            <span class="price-tag">₦75 Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Cable Subscription</span>
+            <span class="price-tag">₦150 Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Education Pins (WAEC)</span>
+            <span class="price-tag">₦3900</span>
+          </li>
+          <li class="list-item">
+            <span>Airtime to Cash</span>
+            <span class="price-tag">85% Rate</span>
+          </li>
+        </ul>
+        <button class="pricing-button mt-10 w-full py-4 text-lg font-bold rounded-xl shadow-md" data-modal-target="affiliateModal">
+          Become an Affiliate
+        </button>
+      </div>
+
+      <!-- Special Package Pricing -->
+      <div class="pricing-card p-8 flex flex-col h-full transform scale-100">
+        <h3 class="text-3xl font-bold text-center text-yellow-300 mb-6 border-b-2 border-yellow-300 pb-3">Special Package</h3>
+        <p class="text-center text-gray-300 mb-8">Maximum benefits for power users and businesses.</p>
+        <ul class="space-y-4 flex-grow">
+          <li class="list-item">
+            <span>Data</span>
+            <span class="price-tag">10% Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Airtime</span>
+            <span class="price-tag">4% Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Electricity Bills</span>
+            <span class="price-tag">₦100 Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Cable Subscription</span>
+            <span class="price-tag">₦200 Discount</span>
+          </li>
+          <li class="list-item">
+            <span>Education Pins (WAEC)</span>
+            <span class="price-tag">₦3800</span>
+          </li>
+          <li class="list-item">
+            <span>Airtime to Cash</span>
+            <span class="price-tag">90% Rate</span>
+          </li>
+        </ul>
+        <button class="pricing-button mt-10 w-full py-4 text-lg font-bold rounded-xl shadow-md" data-modal-target="specialPackageModal">
+          Get Special Package
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Smart User Modal -->
+  <div id="smartUserModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-button"><i class="fas fa-times"></i></button>
+      <h3>Join Smart User</h3>
+      <form class="modal-form">
+        <label for="smartUserName">Full Name</label>
+        <input type="text" id="smartUserName" placeholder="Your Full Name" required>
+
+        <label for="smartUserEmail">Email Address</label>
+        <input type="email" id="smartUserEmail" placeholder="you@example.com" required>
+
+        <label for="smartUserPhone">Phone Number</label>
+        <input type="tel" id="smartUserPhone" placeholder="e.g., 08012345678" required>
+
+        <button type="submit" class="modal-submit-button">Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Affiliate Modal -->
+  <div id="affiliateModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-button"><i class="fas fa-times"></i></button>
+      <h3>Become an Affiliate</h3>
+      <form class="modal-form">
+        <label for="affiliateName">Full Name</label>
+        <input type="text" id="affiliateName" placeholder="Your Full Name" required>
+
+        <label for="affiliateEmail">Email Address</label>
+        <input type="email" id="affiliateEmail" placeholder="you@example.com" required>
+
+        <label for="affiliatePhone">Phone Number</label>
+        <input type="tel" id="affiliatePhone" placeholder="e.g., 08012345678" required>
+
+        <label for="affiliateWebsite">Website/Platform (Optional)</label>
+        <input type="text" id="affiliateWebsite" placeholder="e.g., yourwebsite.com">
+
+        <button type="submit" class="modal-submit-button">Apply Now</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Special Package Modal -->
+  <div id="specialPackageModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-button"><i class="fas fa-times"></i></button>
+      <h3>Apply for Special Package</h3>
+      <form class="modal-form">
+        <label for="specialName">Full Name</label>
+        <input type="text" id="specialName" placeholder="Your Full Name" required>
+
+        <label for="specialEmail">Email Address</label>
+        <input type="email" id="specialEmail" placeholder="you@example.com" required>
+
+        <label for="specialPhone">Phone Number</label>
+        <input type="tel" id="specialPhone" placeholder="e.g., 08012345678" required>
+
+        <label for="specialCompany">Company Name (Optional)</label>
+        <input type="text" id="specialCompany" placeholder="Your Company Name">
+
+        <label for="specialPurpose">Purpose of Special Package</label>
+        <input type="text" id="specialPurpose" placeholder="e.g., bulk data resale" required>
+
+        <button type="submit" class="modal-submit-button">Request Special Access</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modalButtons = document.querySelectorAll('[data-modal-target]');
+      const closeButtons = document.querySelectorAll('.modal-close-button');
+      const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+      // Function to open a modal
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add('show');
+        }
+      }
+
+      // Function to close a modal
+      function closeModal(modalElement) {
+        if (modalElement) {
+          modalElement.classList.remove('show');
+        }
+      }
+
+      // Event listeners for opening modals
+      modalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const modalId = this.dataset.modalTarget;
+          openModal(modalId);
+        });
+      });
+
+      // Event listeners for closing modals via close button
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const modal = this.closest('.modal-overlay');
+          closeModal(modal);
+        });
+      });
+
+      // Event listeners for closing modals by clicking outside the content
+      modalOverlays.forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+          // Only close if the click is directly on the overlay, not its children
+          if (e.target === overlay) {
+            closeModal(overlay);
+          }
+        });
+      });
+
+      // Optional: Prevent form submission for demonstration purposes
+      const forms = document.querySelectorAll('.modal-form');
+      forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault(); // Prevent actual form submission
+          // In a real application, you would send this data to a server
+          alert('Application submitted! (This is a demo. No data was actually sent.)');
+          const modal = this.closest('.modal-overlay');
+          closeModal(modal); // Close the modal after "submission"
+        });
+      });
+    });
+  </script>
+</body>
+</html>

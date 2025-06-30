@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education Pins - IBT SUB</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Basic styling for the body */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a; /* Dark blue background */
+      color: #ffffff; /* White text color */
+      font-family: 'Inter', sans-serif; /* Use Inter font */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px; /* Padding around the content */
+    }
+    /* Container for the form */
+    .container {
+      max-width: 500px; /* Maximum width for the container */
+      width: 100%; /* Full width on smaller screens */
+      background: #1e293b; /* Slightly lighter dark blue for the container */
+      padding: 30px; /* Inner padding */
+      border-radius: 12px; /* Rounded corners */
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Soft shadow */
+    }
+    /* Heading styling */
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #38bdf8; /* Bright blue color for the heading */
+    }
+    /* Label styling */
+    label {
+      display: block; /* Each label on its own line */
+      margin-bottom: 8px;
+      font-weight: 600; /* Bold text */
+      color: #facc15; /* Yellow color for labels */
+    }
+    /* Select and input field styling */
+    select, input {
+      width: 100%; /* Full width */
+      padding: 12px; /* Inner padding */
+      margin-bottom: 20px; /* Space below each field */
+      border-radius: 10px; /* Rounded corners */
+      border: none; /* No border */
+      background-color: #334155; /* Darker background for fields */
+      color: #fff; /* White text color */
+    }
+    /* Focus state for select and input */
+    select:focus, input:focus {
+      outline: none; /* Remove outline on focus */
+      background-color: #475569; /* Slightly lighter background on focus */
+    }
+    /* Button styling */
+    button {
+      width: 100%; /* Full width */
+      padding: 12px; /* Inner padding */
+      background-color: #22c55e; /* Green background */
+      border: none; /* No border */
+      border-radius: 10px; /* Rounded corners */
+      font-weight: bold; /* Bold text */
+      color: #0f172a; /* Dark blue text color */
+      cursor: pointer; /* Pointer cursor on hover */
+      transition: background 0.3s; /* Smooth transition for background color */
+    }
+    /* Button hover state */
+    button:hover {
+      background-color: #16a34a; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><i class="fas fa-graduation-cap"></i> Education Pins</h2> <!-- Changed icon and heading for education -->
+    <form action="#" method="POST">
+      <label for="exam_type">Select Exam Type</label> <!-- Label for Exam Type -->
+      <select name="exam_type" id="exam_type" required>
+        <option value="">-- Choose Exam Type --</option>
+        <option value="WAEC">WAEC Scratch Card</option>
+        <option value="NECO">NECO Token</option>
+        <option value="NABTEB">NABTEB Scratch Card</option>
+      </select>
+
+      <label for="price">Price (₦)</label> <!-- Label for Price -->
+      <input type="number" name="price" id="price" placeholder="Price will appear here" readonly required>
+
+      <label for="phone">Customer Phone Number</label> <!-- Label for customer phone number -->
+      <input type="text" name="phone" id="phone" placeholder="08012345678" required>
+
+      <button type="submit">Get Pin</button>
+    </form>
+  </div>
+
+  <script>
+    // Get references to the select and input elements
+    const examTypeSelect = document.getElementById('exam_type');
+    const priceInput = document.getElementById('price');
+
+    // Add an event listener to the exam type select
+    examTypeSelect.addEventListener('change', function() {
+      const selectedValue = this.value; // Get the selected value
+
+      // Set prices based on the selected exam type
+      let price = '';
+      switch (selectedValue) {
+        case 'WAEC':
+          price = 4000;
+          break;
+        case 'NECO':
+          price = 2000;
+          break;
+        case 'NABTEB':
+          price = 3000;
+          break;
+        default:
+          price = ''; // Clear price if no option is selected
+      }
+      priceInput.value = price; // Update the price input field
+    });
+  </script>
+</body>
+</html>

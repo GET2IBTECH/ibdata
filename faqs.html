@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions - IBT SUB</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Tailwind CSS CDN for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom font for consistency and modern look */
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    /* Custom gradient background for the body */
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1a202c 100%);
+    }
+    /* Accordion item styling */
+    .accordion-item {
+      background: #1e293b; /* Darker background for accordion items */
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      overflow: hidden; /* Ensures rounded corners apply correctly */
+      transition: all 0.3s ease-in-out;
+    }
+    .accordion-item.active {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #38bdf8; /* Bright blue for questions */
+      transition: background-color 0.2s ease-in-out;
+      border-bottom: 1px solid #334155; /* Subtle border */
+    }
+    .accordion-header:hover {
+      background-color: #2a3547; /* Slightly lighter on hover */
+    }
+    .accordion-header .icon {
+      transition: transform 0.3s ease-in-out;
+    }
+    .accordion-item.active .accordion-header .icon {
+      transform: rotate(180deg); /* Rotate icon when open */
+      color: #facc15; /* Yellow icon when active */
+    }
+    .accordion-content {
+      padding: 0 24px;
+      max-height: 0; /* Initially hidden */
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Smooth transition */
+      color: #cbd5e0; /* Lighter text for answers */
+    }
+    .accordion-item.active .accordion-content {
+      max-height: 200px; /* Adjust as needed for content height */
+      padding: 18px 24px; /* Show padding when active */
+    }
+    .accordion-content p {
+      margin-bottom: 10px; /* Spacing for paragraphs inside answers */
+      line-height: 1.6;
+    }
+    .accordion-content ul {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+    .accordion-content ol {
+      list-style-type: decimal;
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+    .accordion-content li {
+      margin-bottom: 5px;
+    }
+
+    /* Small adjustments for responsiveness */
+    @media (max-width: 640px) {
+      .container {
+        padding: 20px;
+      }
+      .accordion-header, .accordion-content {
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center py-10 px-4 min-h-screen">
+  <div class="container max-w-4xl w-full p-8 rounded-xl">
+    <h2 class="text-center text-sky-400 text-4xl font-extrabold mb-12 flex items-center justify-center tracking-wide">
+      <i class="fas fa-question-circle mr-4 text-yellow-400"></i> Frequently Asked Questions
+    </h2>
+
+    <div id="faq-accordion" class="space-y-6">
+
+      <!-- Getting Started -->
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How do I register on IBT SUB?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>To register, simply click on the "Sign Up" or "Register" button on our homepage. You'll need to provide some basic information like your name, email, and phone number, and create a password.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>Is registration free?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Yes, registration on IBT SUB is absolutely free. You only pay for the services you use.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How do I log in to my account?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Visit our homepage and click on "Login." Enter your registered email/username and password to access your dashboard.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>What if I forget my password?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>On the login page, click on "Forgot Password?" and follow the instructions to reset it via your registered email address.</p>
+        </div>
+      </div>
+
+      <!-- Funding Your Wallet -->
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How can I fund my wallet?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>You can fund your wallet using various secure payment methods, including bank transfer, debit/credit cards, and USSD. Navigate to the "Fund Wallet" section on your dashboard for options.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>What is the minimum amount I can fund my wallet with?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>The minimum funding amount may vary, but it is typically small (e.g., ₦100 or ₦500). Please check the "Fund Wallet" page for the exact current minimum.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How long does it take for my wallet to be funded after payment?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Payments are usually processed instantly. If there's a delay, please allow up to 15 minutes, then contact our support with your transaction details.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>Are there any charges for funding my wallet?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Some payment gateways may apply a small processing fee. This will be clearly displayed before you confirm your payment.</p>
+        </div>
+      </div>
+
+      <!-- Services: Data, Airtime & Bills -->
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How do I buy data bundles?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Go to the "Buy Data" section, select your network, choose your desired data plan, enter the recipient's phone number, and confirm your purchase.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How do I buy airtime?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Navigate to the "Buy Airtime" section, select the network, enter the amount and phone number, then complete the transaction.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>Can I pay electricity bills through your platform?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Yes, you can pay electricity bills. Go to the "Electricity Bills" section, select your Disco, meter type, enter your meter number, amount, and phone number.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How do I subscribe for cable TV (DSTV, GOtv, Startimes)?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>In the "Cable Subscription" section, choose your cable provider, enter your Smartcard/IUC number, select your desired plan, and proceed with payment.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>What are Education Pins and how do I purchase them?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Education Pins are scratch cards or tokens for examination bodies like WAEC, NECO, and NABTEB. Select the exam type in the "Education Pins" section, the price will automatically appear, and then confirm your purchase.</p>
+        </div>
+      </div>
+
+      <!-- Airtime to Cash Conversion -->
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How does the Airtime to Cash service work?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>This service allows you to convert excess airtime on your phone into cash in your bank account. You transfer the airtime to a designated number, and we credit the equivalent cash amount (minus our commission) to your wallet or bank account.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>What is the conversion rate for Airtime to Cash?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>The conversion rate varies by network and amount, typically ranging from 80% to 90% as shown in our pricing plans. This means if you convert ₦1000 airtime at an 80% rate, you receive ₦800 cash.</p>
+        </div>
+      </div>
+
+      <!-- Account Tiers & Benefits -->
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>What are the different user tiers (Smart User, Affiliate, Special Package)?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>These are different account levels that offer varying discounts and benefits on our services. Higher tiers generally receive better discounts and conversion rates.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How can I upgrade my account tier?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Information on upgrading your account tier and the requirements for each will be available in the "Pricing Plans" or "Upgrade Account" section of your dashboard.</p>
+        </div>
+      </div>
+
+      <!-- Support & Troubleshooting -->
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>My transaction failed, but my wallet was debited. What should I do?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>In most cases, failed transactions are automatically reversed within minutes. If not, please contact our support team immediately with your transaction ID and details.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>How can I contact customer support?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>You can reach our customer support team via the "Contact Us" page, email, or live chat (if available) during business hours.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <span>Is my personal and payment information secure on IBT SUB?</span>
+          <i class="fas fa-chevron-down icon"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Absolutely. We use industry-standard encryption and security protocols to protect your personal data and payment information. We do not store your full card details.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+          const accordionItem = this.closest('.accordion-item');
+          const accordionContent = this.nextElementSibling;
+
+          // Toggle the active class on the accordion item
+          accordionItem.classList.toggle('active');
+
+          // Toggle the max-height for the content
+          if (accordionItem.classList.contains('active')) {
+            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+          } else {
+            accordionContent.style.maxHeight = '0';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
